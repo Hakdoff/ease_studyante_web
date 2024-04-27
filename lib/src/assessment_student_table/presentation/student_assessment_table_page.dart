@@ -1,6 +1,9 @@
+import 'package:collection/collection.dart';
+import 'package:ease_studyante_teacher_app/core/bloc/global_bloc.dart';
 import 'package:ease_studyante_teacher_app/core/common_widget/common_widget.dart';
 import 'package:ease_studyante_teacher_app/core/common_widget/custom_appbar.dart';
 import 'package:ease_studyante_teacher_app/core/common_widget/main_scaffold.dart';
+import 'package:ease_studyante_teacher_app/core/common_widget/notification_modal.dart';
 import 'package:ease_studyante_teacher_app/core/enum/view_status.dart';
 import 'package:ease_studyante_teacher_app/core/extensions/time_formatter.dart';
 import 'package:ease_studyante_teacher_app/gen/colors.gen.dart';
@@ -8,6 +11,7 @@ import 'package:ease_studyante_teacher_app/src/assessment_student_table/data/dat
 import 'package:ease_studyante_teacher_app/src/assessment_student_table/presentation/bloc/assessment/student_assessment_bloc.dart';
 import 'package:ease_studyante_teacher_app/src/assessment_student_table/presentation/widgets/student_assessment_list_view.dart';
 import 'package:ease_studyante_teacher_app/src/assessment_table/domain/entities/assessment.dart';
+import 'package:ease_studyante_teacher_app/src/profile/domain/entities/grading_periods.dart';
 import 'package:ease_studyante_teacher_app/src/section/domain/entities/teacher_schedule.dart';
 import 'package:ease_studyante_teacher_app/src/section_student_table/data/data_sources/student_list_repository_impl.dart';
 import 'package:ease_studyante_teacher_app/src/section_student_table/presentation/widgets/search_field.dart';
@@ -43,6 +47,7 @@ class _StudentAssessmentTablePageState
   final ScrollController scrollController = ScrollController();
   final TextEditingController searchController = TextEditingController();
   late StudentAssessmentBloc studentAssessmentBloc;
+  GradingPeriods? period;
   ValueNotifier<bool> isSearch = ValueNotifier<bool>(false);
 
   @override
@@ -52,6 +57,7 @@ class _StudentAssessmentTablePageState
       studentAssessmentRepository: StudentAssessmentRepositoryImpl(),
       studentListRepository: StudentListRepositoryImpl(),
     );
+    handleGetPeriod();
     initBloc();
     handleEventScrollListener();
     searchController.addListener(() {
@@ -69,6 +75,7 @@ class _StudentAssessmentTablePageState
             context: context,
             title: widget.args.appbarTitle,
             showBackBtn: true,
+            actions: [const NotificationModal()],
           ),
           body: BlocBuilder<StudentAssessmentBloc, StudentAssessmentState>(
             builder: (context, state) {
@@ -175,6 +182,36 @@ class _StudentAssessmentTablePageState
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
+                        if (!isEncodeEnable())
+                          Container(
+                            padding: const EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              color: Colors.red,
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            child: const Text(
+                              "Encoding is already closed.",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        if (isEncodeEnable())
+                          Container(
+                            padding: const EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              color: Colors.green,
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            child: const Text(
+                              "Encoding is open",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
                         Text(
                           'Assessment Name: ${widget.args.assessment.name}',
                           style: const TextStyle(
@@ -199,6 +236,7 @@ class _StudentAssessmentTablePageState
                         scrollController: scrollController,
                         isPaginate: state.viewStatus == ViewStatus.isPaginated,
                         students: state.studentAssessmentModel.assessments,
+                        isEncodeEnable: !isEncodeEnable(),
                       ),
                     ),
                   ],
@@ -257,5 +295,27 @@ class _StudentAssessmentTablePageState
         );
       }
     });
+  }
+
+  void handleGetPeriod() {
+    List<GradingPeriods> gradingPeriods =
+        context.read<GlobalBloc>().state.profile.gradingPeriods;
+
+    setState(() {
+      period = gradingPeriods.firstWhereOrNull((element) =>
+          element.period.toUpperCase() ==
+          widget.args.assessment.gradingPeriod.toUpperCase());
+    });
+  }
+
+  bool isEncodeEnable() {
+    final currentDateTime = DateTime.now();
+
+    if (period == null) {
+      return false;
+    }
+
+    return currentDateTime.isBefore(period!.gradingDeadline) ||
+        period!.isOverrideEncoding;
   }
 }

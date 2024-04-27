@@ -16,11 +16,13 @@ class StudentAssessmentListView extends StatelessWidget {
     required this.scrollController,
     required this.isPaginate,
     required this.students,
+    this.isEncodeEnable = false,
   });
 
   final ScrollController scrollController;
   final bool isPaginate;
   final List<StudentAssessment> students;
+  final bool isEncodeEnable;
 
   @override
   Widget build(BuildContext context) {
@@ -144,6 +146,7 @@ class StudentAssessmentListView extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(5.0),
                   child: ScoreInputField(
+                    readOnly: isEncodeEnable,
                     isError: !isValidGrade(
                         currentScore: double.parse(e.obtainedMarks),
                         totalScore: double.parse(e.assessment.maxMark)),

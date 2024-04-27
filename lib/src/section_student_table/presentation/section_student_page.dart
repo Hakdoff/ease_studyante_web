@@ -1,6 +1,7 @@
 import 'package:ease_studyante_teacher_app/core/common_widget/common_widget.dart';
 import 'package:ease_studyante_teacher_app/core/common_widget/custom_appbar.dart';
 import 'package:ease_studyante_teacher_app/core/common_widget/main_scaffold.dart';
+import 'package:ease_studyante_teacher_app/core/common_widget/notification_modal.dart';
 import 'package:ease_studyante_teacher_app/gen/colors.gen.dart';
 import 'package:ease_studyante_teacher_app/src/attendance/presentation/widgets/attendance_screen.dart';
 import 'package:ease_studyante_teacher_app/src/section/domain/entities/parent.dart';
@@ -55,7 +56,11 @@ class _SectionStudentPageState extends State<SectionStudentPage> {
     return MainScaffold(
       child: Scaffold(
         appBar: buildAppBar(
-            context: context, title: 'Student Information', showBackBtn: true),
+          context: context,
+          title: 'Student Information',
+          showBackBtn: true,
+          actions: [const NotificationModal()],
+        ),
         body: SizedBox.expand(
           child: Padding(
             padding: const EdgeInsets.all(15.0),

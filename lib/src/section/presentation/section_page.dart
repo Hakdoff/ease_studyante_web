@@ -1,4 +1,5 @@
 import 'package:ease_studyante_teacher_app/core/common_widget/custom_appbar.dart';
+import 'package:ease_studyante_teacher_app/core/common_widget/notification_modal.dart';
 import 'package:ease_studyante_teacher_app/src/section/data/data_sources/teacher_schedule_repository_impl.dart';
 import 'package:ease_studyante_teacher_app/src/section/domain/entities/teacher_schedule.dart';
 import 'package:ease_studyante_teacher_app/src/section/presentation/bloc/schedule_bloc.dart';
@@ -31,7 +32,11 @@ class _SectionPageState extends State<SectionPage> {
     return BlocProvider(
       create: (context) => scheduleBloc..add(OnGetScheduleEvent()),
       child: Scaffold(
-        appBar: buildAppBar(context: context, title: 'Section'),
+        appBar: buildAppBar(
+          context: context,
+          title: 'Section',
+          actions: [const NotificationModal()],
+        ),
         body: SizedBox.expand(
           child: Padding(
             padding: const EdgeInsets.all(30.0),

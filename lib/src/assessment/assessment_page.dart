@@ -1,5 +1,6 @@
 import 'package:ease_studyante_teacher_app/core/common_widget/custom_appbar.dart';
 import 'package:ease_studyante_teacher_app/core/common_widget/main_scaffold.dart';
+import 'package:ease_studyante_teacher_app/core/common_widget/notification_modal.dart';
 import 'package:ease_studyante_teacher_app/src/assessment_table/presentation/assessment_table_page.dart';
 import 'package:ease_studyante_teacher_app/src/section/data/data_sources/teacher_schedule_repository_impl.dart';
 import 'package:ease_studyante_teacher_app/src/section/domain/entities/teacher_schedule.dart';
@@ -33,7 +34,11 @@ class _AssessmentPageState extends State<AssessmentPage> {
       create: (context) => scheduleBloc..add(OnGetScheduleEvent()),
       child: MainScaffold(
         child: Scaffold(
-          appBar: buildAppBar(context: context, title: 'Assessment'),
+          appBar: buildAppBar(
+            context: context,
+            title: 'Assessment',
+            actions: [const NotificationModal()],
+          ),
           body: SizedBox.expand(
             child: Padding(
               padding: const EdgeInsets.all(30.0),

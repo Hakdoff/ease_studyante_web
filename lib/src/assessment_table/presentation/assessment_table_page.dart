@@ -1,6 +1,7 @@
 import 'package:ease_studyante_teacher_app/core/common_widget/common_widget.dart';
 import 'package:ease_studyante_teacher_app/core/common_widget/custom_appbar.dart';
 import 'package:ease_studyante_teacher_app/core/common_widget/main_scaffold.dart';
+import 'package:ease_studyante_teacher_app/core/common_widget/notification_modal.dart';
 import 'package:ease_studyante_teacher_app/core/enum/view_status.dart';
 import 'package:ease_studyante_teacher_app/src/assessment_student_table/presentation/student_assessment_table_page.dart';
 import 'package:ease_studyante_teacher_app/src/assessment_table/data/data_sources/assessment_repository_impl.dart';
@@ -61,6 +62,7 @@ class _AssessmentTablePageState extends State<AssessmentTablePage> {
               context: context,
               title: widget.args.appbarTitle,
               showBackBtn: true,
+              actions: [const NotificationModal()],
             ),
             body: BlocProvider(
               create: (context) => AssessmentFilterCubit(),

@@ -1,6 +1,7 @@
 import 'package:ease_studyante_teacher_app/core/common_widget/common_widget.dart';
 import 'package:ease_studyante_teacher_app/core/common_widget/custom_appbar.dart';
 import 'package:ease_studyante_teacher_app/core/common_widget/main_scaffold.dart';
+import 'package:ease_studyante_teacher_app/core/common_widget/notification_modal.dart';
 import 'package:ease_studyante_teacher_app/src/section/domain/entities/teacher_schedule.dart';
 import 'package:ease_studyante_teacher_app/src/section_student_table/data/data_sources/student_list_repository_impl.dart';
 import 'package:ease_studyante_teacher_app/src/section_student_table/presentation/bloc/student_list_bloc.dart';
@@ -57,6 +58,7 @@ class _SectionStudentTablePageState extends State<SectionStudentTablePage> {
             context: context,
             title: widget.args.appbarTitle,
             showBackBtn: true,
+            actions: [const NotificationModal()],
           ),
           body: BlocBuilder<StudentListBloc, StudentListState>(
             builder: (context, state) {

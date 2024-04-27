@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:ease_studyante_teacher_app/src/profile/domain/entities/grading_periods.dart';
 import 'package:equatable/equatable.dart';
 
 class Profile extends Equatable {
@@ -10,6 +11,7 @@ class Profile extends Equatable {
   final String email;
   final String department;
   final String? profilePhoto;
+  final List<GradingPeriods> gradingPeriods;
 
   const Profile({
     required this.pk,
@@ -19,6 +21,7 @@ class Profile extends Equatable {
     required this.email,
     required this.department,
     this.profilePhoto,
+    this.gradingPeriods = const [],
   });
 
   Profile copyWith({
@@ -29,6 +32,7 @@ class Profile extends Equatable {
     String? email,
     String? department,
     String? profilePhoto,
+    List<GradingPeriods>? gradingPeriods,
   }) {
     return Profile(
       pk: pk ?? this.pk,
@@ -38,6 +42,7 @@ class Profile extends Equatable {
       email: email ?? this.email,
       department: department ?? this.department,
       profilePhoto: profilePhoto ?? this.profilePhoto,
+      gradingPeriods: gradingPeriods ?? this.gradingPeriods,
     );
   }
 
@@ -66,6 +71,8 @@ class Profile extends Equatable {
       email: map['email'] ?? '',
       department: map['department'] ?? '',
       profilePhoto: map['profilePhoto'],
+      gradingPeriods: List<GradingPeriods>.from(
+          map['grading_periods']?.map((x) => GradingPeriods.fromMap(x))),
     );
   }
 
@@ -104,5 +111,6 @@ class Profile extends Equatable {
         email,
         department,
         profilePhoto,
+        gradingPeriods
       ];
 }

@@ -118,7 +118,7 @@ class StudentListView extends StatelessWidget {
                       ? null
                       : const Icon(
                           Icons.person,
-                          size: 45,
+                          size: 40,
                           color: Colors.white,
                         ),
                 ),
