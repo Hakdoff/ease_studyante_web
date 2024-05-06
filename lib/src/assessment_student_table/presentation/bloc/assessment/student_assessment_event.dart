@@ -11,11 +11,13 @@ class OnGetStudentAssessmentEvent extends StudentAssessmentEvent {
   final String assessmentId;
   final String sectionId;
   final String subjectId;
+  final Assessment assessment;
 
   const OnGetStudentAssessmentEvent({
     required this.assessmentId,
     required this.sectionId,
     required this.subjectId,
+    required this.assessment,
   });
 
   @override
@@ -23,6 +25,7 @@ class OnGetStudentAssessmentEvent extends StudentAssessmentEvent {
         assessmentId,
         subjectId,
         sectionId,
+        assessment,
       ];
 }
 
@@ -30,11 +33,14 @@ class OnPaginateStudentAssessmentEvent extends StudentAssessmentEvent {
   final String assessmentId;
   final String sectionId;
   final String subjectId;
+  final Assessment assessment;
 
   const OnPaginateStudentAssessmentEvent({
     required this.assessmentId,
     required this.sectionId,
     required this.subjectId,
+            required this.assessment,
+
   });
 
   @override
@@ -42,6 +48,7 @@ class OnPaginateStudentAssessmentEvent extends StudentAssessmentEvent {
         assessmentId,
         subjectId,
         sectionId,
+        assessment,
       ];
 }
 
@@ -50,12 +57,15 @@ class OnSearchStudent extends StudentAssessmentEvent {
   final String assessmentId;
   final String sectionId;
   final String subjectId;
+  final Assessment assessment;
 
   const OnSearchStudent({
     required this.studentName,
     required this.assessmentId,
     required this.sectionId,
     required this.subjectId,
+        required this.assessment,
+
   });
 
   @override
@@ -64,6 +74,7 @@ class OnSearchStudent extends StudentAssessmentEvent {
         studentName,
         subjectId,
         sectionId,
+        assessment,
       ];
 }
 

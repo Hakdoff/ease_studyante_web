@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:ease_studyante_teacher_app/src/assessment_student_table/data/models/student_assessment_model.dart';
 import 'package:ease_studyante_teacher_app/src/assessment_student_table/domain/entities/student_assessment.dart';
+import 'package:ease_studyante_teacher_app/src/assessment_table/domain/entities/assessment.dart';
 import 'package:ease_studyante_teacher_app/src/section/domain/entities/student.dart';
 
 abstract class StudentAssessmentRepository {
@@ -17,6 +18,7 @@ abstract class StudentAssessmentRepository {
   StudentAssessmentModel initStudentAssessments({
     required StudentAssessmentModel studentAssessments,
     required List<Student> students,
+    required Assessment assessment,
   });
 
   FutureOr<StudentAssessment> saveStudentScore({

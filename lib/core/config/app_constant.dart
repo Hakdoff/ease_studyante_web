@@ -20,10 +20,10 @@ class AppConstant {
   static const appName = 'EaseStudyante';
 
   // DEPLOYED ENV
-  static const clientId = 'Wk4SyLUdxleOKlGWJEVTulM1pjlLQkcFnIVMtf2S';
+  static const clientId = 'yseOBLsAqKeLTRSFR0L2KFJORZyFRQXQDDX8FOdx';
   static const clientSecret =
-      'V3UXqzMseJw6xifMThX2AgGIJasgYm0FLa5fXuqR8frGObuC3t4PfZp1sT8L0zccW4MKQ5akft7fjQMFeLyufyEviFHVaJN49HdjH3rb8Kng0QwvfKnhPiW04bYioOkn';
-  static const serverUrl = 'https://easestudyante.onrender.com/';
+      'nZ4Ct3m7ZsqsPGAftgz6HaaqVGlZZPaWYlVkKlJmbqsIVtTQtT4OFeEw4M4IJCyA0u5WlTVriFDC55GjBYimIXiFxgxgcvL8z1RYdmN8pRVgVUojFe2DpWp6mQ6AFBCP';
+  static const serverUrl = 'https://easestudyante.onrender.com';
   static const serverHost = 'easestudyante.onrender.com';
 
   static const apiUrl = '$serverUrl/api';

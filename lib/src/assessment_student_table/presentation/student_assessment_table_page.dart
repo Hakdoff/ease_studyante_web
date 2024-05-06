@@ -136,6 +136,7 @@ class _StudentAssessmentTablePageState
                                     subjectId: widget.args.schedule.subject.id,
                                     studentName: value,
                                     assessmentId: widget.args.assessment.id,
+                                    assessment: widget.args.assessment,
                                   ),
                                 );
                               },
@@ -157,6 +158,8 @@ class _StudentAssessmentTablePageState
                                   subjectId: widget.args.schedule.subject.id,
                                   studentName: searchController.value.text,
                                   assessmentId: widget.args.assessment.id,
+                                                                      assessment: widget.args.assessment,
+
                                 ),
                               );
                             },
@@ -278,6 +281,7 @@ class _StudentAssessmentTablePageState
         assessmentId: widget.args.assessment.id,
         sectionId: widget.args.schedule.section.id,
         subjectId: widget.args.schedule.subject.id,
+        assessment: widget.args.assessment,
       ),
     );
   }
@@ -291,6 +295,7 @@ class _StudentAssessmentTablePageState
             sectionId: widget.args.schedule.section.id,
             subjectId: widget.args.schedule.subject.id,
             assessmentId: widget.args.assessment.id,
+            assessment: widget.args.assessment,
           ),
         );
       }

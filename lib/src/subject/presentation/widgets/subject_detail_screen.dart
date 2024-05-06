@@ -197,7 +197,7 @@ class _SubjectDetailScreenState extends State<SubjectDetailScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Name: ${globalBloc.state.studentProfile.firstName} ${globalBloc.state.studentProfile.lastName}',
+                            'Name: ${widget.args.student.user.firstName} ${widget.args.student.user.lastName}',
                           ),
                           Text(
                             'Section: ${widget.args.section.name}',

@@ -6,6 +6,7 @@ import 'package:ease_studyante_teacher_app/core/interceptor/api_interceptor.dart
 import 'package:ease_studyante_teacher_app/src/assessment_student_table/data/models/student_assessment_model.dart';
 import 'package:ease_studyante_teacher_app/src/assessment_student_table/domain/entities/student_assessment.dart';
 import 'package:ease_studyante_teacher_app/src/assessment_student_table/domain/repositories/assessment_student_repository.dart';
+import 'package:ease_studyante_teacher_app/src/assessment_table/domain/entities/assessment.dart';
 import 'package:ease_studyante_teacher_app/src/section/domain/entities/student.dart';
 
 class StudentAssessmentRepositoryImpl extends StudentAssessmentRepository {
@@ -59,26 +60,26 @@ class StudentAssessmentRepositoryImpl extends StudentAssessmentRepository {
   StudentAssessmentModel initStudentAssessments({
     required StudentAssessmentModel studentAssessments,
     required List<Student> students,
+    required Assessment assessment,
   }) {
-    if (studentAssessments.assessments.length == students.length ||
-        studentAssessments.assessments.isEmpty) {
+    if (studentAssessments.assessments.length == students.length) {
       return studentAssessments;
     }
 
     final List<StudentAssessment> assessments = [];
-    final currentAssessment = studentAssessments.assessments.first.assessment;
+    
 
     for (int i = 0; i < students.length; i++) {
       final student = students[i];
-      final assessment = studentAssessments.assessments
+      final studentAssessment = studentAssessments.assessments
           .firstWhereOrNull((e) => student.user.pk == e.student.user.pk);
 
       assessments.add(
-        assessment ??
+        studentAssessment ??
             StudentAssessment(
               id: '-1',
               obtainedMarks: '-1',
-              assessment: currentAssessment,
+              assessment: assessment,
               student: student,
               createdAt: '',
             ),

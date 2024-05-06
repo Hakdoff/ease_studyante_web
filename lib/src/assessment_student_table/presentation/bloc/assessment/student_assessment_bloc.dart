@@ -1,6 +1,7 @@
 import 'package:ease_studyante_teacher_app/core/enum/view_status.dart';
 import 'package:ease_studyante_teacher_app/src/assessment_student_table/data/models/student_assessment_model.dart';
 import 'package:ease_studyante_teacher_app/src/assessment_student_table/domain/repositories/assessment_student_repository.dart';
+import 'package:ease_studyante_teacher_app/src/assessment_table/domain/entities/assessment.dart';
 import 'package:ease_studyante_teacher_app/src/section_student_table/data/models/student_list_response_model.dart';
 import 'package:ease_studyante_teacher_app/src/section_student_table/domain/repositories/student_list_reopsitory.dart';
 import 'package:equatable/equatable.dart';
@@ -91,6 +92,7 @@ class StudentAssessmentBloc
         studentAssessmentRepository.initStudentAssessments(
       studentAssessments: studentAssessments,
       students: students.students,
+      assessment: event.assessment,
     );
 
     emit(
@@ -146,7 +148,10 @@ class StudentAssessmentBloc
     final modifiedAssessmentList =
         studentAssessmentRepository.initStudentAssessments(
             studentAssessments: studentAssessments,
-            students: students.students);
+            students: students.students,
+                  assessment: event.assessment,
+
+            );
 
     emit(
       state.copyWith(
@@ -177,7 +182,10 @@ class StudentAssessmentBloc
       final modifiedAssessmentList =
           studentAssessmentRepository.initStudentAssessments(
               studentAssessments: studentAssessments,
-              students: students.students);
+              students: students.students,
+                    assessment: event.assessment,
+
+              );
 
       emit(
         state.copyWith(
