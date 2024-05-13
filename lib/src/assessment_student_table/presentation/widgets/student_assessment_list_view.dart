@@ -337,6 +337,6 @@ class _StudentAssessmentListViewState extends State<StudentAssessmentListView> {
       return false;
     }
 
-    return ((score / totalScore) * 100) >= 75;
+    return (((score / totalScore) * 50) + 50) >= 75;
   }
 }

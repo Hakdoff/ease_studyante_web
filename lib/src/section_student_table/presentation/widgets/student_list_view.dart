@@ -52,15 +52,15 @@ class StudentListView extends StatelessWidget {
             ),
           ),
         ),
-        DataColumn2(
-          fixedWidth: 50,
-          numeric: true,
-          onSort: (columnIndex, ascending) {},
-          label: const Text(
-            '',
-            style: TextStyle(fontStyle: FontStyle.italic),
-          ),
-        ),
+        // DataColumn2(
+        //   fixedWidth: 50,
+        //   numeric: true,
+        //   onSort: (columnIndex, ascending) {},
+        //   label: const Text(
+        //     '',
+        //     style: TextStyle(fontStyle: FontStyle.italic),
+        //   ),
+        // ),
         DataColumn2(
           onSort: (columnIndex, ascending) {},
           label: const FittedBox(
@@ -73,7 +73,15 @@ class StudentListView extends StatelessWidget {
         const DataColumn2(
           label: FittedBox(
             child: Text(
-              'Firsname',
+              'Firstname',
+              style: TextStyle(fontStyle: FontStyle.italic),
+            ),
+          ),
+        ),
+        const DataColumn2(
+          label: FittedBox(
+            child: Text(
+              'Learner Reference Number',
               style: TextStyle(fontStyle: FontStyle.italic),
             ),
           ),
@@ -106,25 +114,26 @@ class StudentListView extends StatelessWidget {
           (e) => DataRow(
             color: MaterialStateProperty.all(Colors.white),
             cells: [
-              DataCell(Text('${students.indexOf(e) + 1}')),
-              DataCell(
-                CircleAvatar(
-                  backgroundColor: ColorName.primary,
-                  backgroundImage: e.profilePhoto != null
-                      ? Image.network(e.profilePhoto!).image
-                      : null,
-                  radius: 45,
-                  child: e.profilePhoto != null
-                      ? null
-                      : const Icon(
-                          Icons.person,
-                          size: 40,
-                          color: Colors.white,
-                        ),
-                ),
-              ),
+              DataCell(Text('${students.indexOf(e) + 1}.')),
+              // DataCell(
+              //   CircleAvatar(
+              //     backgroundColor: ColorName.primary,
+              //     backgroundImage: e.profilePhoto != null
+              //         ? Image.network(e.profilePhoto!).image
+              //         : null,
+              //     radius: 45,
+              //     child: e.profilePhoto != null
+              //         ? null
+              //         : const Icon(
+              //             Icons.person,
+              //             size: 45,
+              //             color: Colors.white,
+              //           ),
+              //   ),
+              // ),
               DataCell(Text(e.user.lastName)),
               DataCell(Text(e.user.firstName)),
+              DataCell(Text(e.lrn)),
               DataCell(Text(e.yearLevel)),
               DataCell(CustomBtn(
                 label: 'View',

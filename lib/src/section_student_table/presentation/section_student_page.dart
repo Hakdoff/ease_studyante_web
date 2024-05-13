@@ -73,6 +73,7 @@ class _SectionStudentPageState extends State<SectionStudentPage> {
                   firstName: student.user.firstName,
                   lastName: student.user.lastName,
                   gender: student.gender == 'M' ? "Male" : "Female",
+                  lrn: student.lrn,
                   profilePhoto: student.profilePhoto,
                   section: schedule.section.name,
                   yearLevel: student.yearLevel,

@@ -200,6 +200,9 @@ class _SubjectDetailScreenState extends State<SubjectDetailScreen> {
                             'Name: ${widget.args.student.user.firstName} ${widget.args.student.user.lastName}',
                           ),
                           Text(
+                            'Learner Reference Number: ${widget.args.student.lrn}',
+                          ),
+                          Text(
                             'Section: ${widget.args.section.name}',
                           )
                         ],

@@ -13,6 +13,7 @@ class PersonCard extends StatelessWidget {
     required this.gender,
     required this.age,
     this.yearLevel,
+    this.lrn,
     this.profilePhoto,
     this.section,
     this.extraButtons,
@@ -24,6 +25,7 @@ class PersonCard extends StatelessWidget {
 
   final String contactNumber;
   final String gender;
+  final String? lrn;
   final String age;
   final String? yearLevel;
   final String? profilePhoto;
@@ -88,6 +90,14 @@ class PersonCard extends StatelessWidget {
                     const Gap(8),
                     CustomText(
                       text: 'Gender: ${gender == 'M' ? "Male" : "Female"}',
+                      style: const TextStyle(
+                        fontSize: 15,
+                        color: ColorName.placeHolder,
+                      ),
+                    ),
+                    const Gap(8),
+                    CustomText(
+                      text: 'Learner Reference Number: $lrn',
                       style: const TextStyle(
                         fontSize: 15,
                         color: ColorName.placeHolder,
